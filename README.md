@@ -80,3 +80,6 @@
         3:  471 ms
         4:  490 ms
 
+### Setting number of threads to be used
+
+> `set UV_THREADPOOL_SIZE = 12 && node threads.js`
