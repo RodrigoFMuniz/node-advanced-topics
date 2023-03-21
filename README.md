@@ -43,3 +43,40 @@
         }
 
         // exit back to terminal 
+    
+
+## Threads
+
+- If node was a trully single thread, when calling the function below, we should get a benchmark which would be a sum of each execution. Instead of that , what we see is almost the same amount of time for each exectution.
+
+        const crypto = require('crypto');
+
+        const start = Date.now()
+
+        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+
+            console.log('1: ', Date.now() - start, 'ms');
+        })
+
+        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+
+            console.log('2: ', Date.now() - start, 'ms');
+        })
+
+        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+
+            console.log('3: ', Date.now() - start, 'ms');
+        })
+
+        crypto.pbkdf2('a', 'b', 100000, 512, 'sha512', () => {
+
+            console.log('4: ', Date.now() - start, 'ms');
+        })
+
+        // results
+
+        1:  463 ms
+        2:  466 ms
+        3:  471 ms
+        4:  490 ms
+
